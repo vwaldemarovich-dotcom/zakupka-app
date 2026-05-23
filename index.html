@@ -195,6 +195,26 @@ select{
         inset 0 0 5px rgba(0,255,255,.1);
 }
 
+select{
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:right 14px center;
+
+    background-size:14px;
+
+    padding-right:42px;
+}
+
+input[type="number"]{
+    color-scheme:dark;
+}
+
 input:focus,
 select:focus{
     outline:none;
@@ -491,23 +511,19 @@ onclick="saveEdit()">
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
 <script>
 
-let products = JSON.parse(
-localStorage.getItem('zakupka_products') || '[]'
-);
-
-let suppliers = JSON.parse(
-localStorage.getItem('zakupka_suppliers') || '{}'
-);
+let products = JSON.parse(localStorage.getItem('zakupka_products') || '[]');
+let suppliers = JSON.parse(localStorage.getItem('zakupka_suppliers') || '{}');
 
 let currentCategory = '';
 let currentEdit = null;
+let sortable = null;
 
 let mainTitle =
-localStorage.getItem(
-'zakupka_main_title'
-) || '🍴 Dolce Vita';
+localStorage.getItem('zakupka_main_title') || 'DV';
 
 function save(){
 
@@ -526,9 +542,7 @@ JSON.stringify(suppliers)
 function saveMainTitle(){
 
 mainTitle =
-document.getElementById(
-'mainTitle'
-).value || 'Закупка';
+document.getElementById('mainTitle').value || 'DV';
 
 localStorage.setItem(
 'zakupka_main_title',
@@ -620,25 +634,11 @@ currentEdit = i;
 
 const p = products[i];
 
-document.getElementById(
-'editName'
-).value = p.name;
-
-document.getElementById(
-'editQty'
-).value = p.qty;
-
-document.getElementById(
-'editUnit'
-).value = p.unit;
-
-document.getElementById(
-'editCat'
-).value = p.cat;
-
-document.getElementById(
-'editComment'
-).value = p.comment || '';
+document.getElementById('editName').value = p.name;
+document.getElementById('editQty').value = p.qty;
+document.getElementById('editUnit').value = p.unit;
+document.getElementById('editCat').value = p.cat;
+document.getElementById('editComment').value = p.comment || '';
 
 document.getElementById(
 'editModal'
@@ -657,31 +657,19 @@ document.getElementById(
 function saveEdit(){
 
 products[currentEdit].name =
-document.getElementById(
-'editName'
-).value;
+document.getElementById('editName').value;
 
 products[currentEdit].qty =
-Number(
-document.getElementById(
-'editQty'
-).value
-);
+Number(document.getElementById('editQty').value);
 
 products[currentEdit].unit =
-document.getElementById(
-'editUnit'
-).value;
+document.getElementById('editUnit').value;
 
 products[currentEdit].cat =
-document.getElementById(
-'editCat'
-).value;
+document.getElementById('editCat').value;
 
 products[currentEdit].comment =
-document.getElementById(
-'editComment'
-).value;
+document.getElementById('editComment').value;
 
 save();
 
@@ -712,14 +700,10 @@ function saveSupplier(){
 suppliers[currentCategory] = {
 
 name:
-document.getElementById(
-'supplierName'
-).value,
+document.getElementById('supplierName').value,
 
 phone:
-document.getElementById(
-'supplierPhone'
-).value
+document.getElementById('supplierPhone').value
 
 };
 
@@ -736,6 +720,7 @@ products.forEach(p=>{
 if(p.cat===currentCategory){
 
 p.active = false;
+p.qty = 1;
 
 }
 
@@ -750,11 +735,9 @@ render();
 function downloadBackup(){
 
 const backup = {
-
 products,
 suppliers,
 mainTitle
-
 };
 
 const blob = new Blob(
@@ -797,7 +780,7 @@ suppliers =
 data.suppliers || {};
 
 mainTitle =
-data.mainTitle || 'Закупка';
+data.mainTitle || 'DV';
 
 save();
 
@@ -853,9 +836,7 @@ currentCategory = categories[0];
 }
 
 const select =
-document.getElementById(
-'categorySelect'
-);
+document.getElementById('categorySelect');
 
 select.innerHTML='';
 
@@ -865,7 +846,6 @@ const option =
 document.createElement('option');
 
 option.value = cat;
-
 option.textContent = cat;
 
 if(cat===currentCategory){
@@ -886,9 +866,7 @@ render();
 
 };
 
-if(
-suppliers[currentCategory]
-){
+if(suppliers[currentCategory]){
 
 document.getElementById(
 'supplierName'
@@ -902,7 +880,13 @@ suppliers[currentCategory].phone || '';
 
 }
 
-if(!grouped[currentCategory]) return;
+if(!grouped[currentCategory]){
+
+generateText();
+
+return;
+
+}
 
 grouped[currentCategory]
 .forEach(({p,i})=>{
@@ -970,6 +954,59 @@ box.appendChild(row);
 
 });
 
+if(sortable){
+
+sortable.destroy();
+
+}
+
+sortable = new Sortable(box,{
+
+animation:150,
+
+delay:200,
+
+delayOnTouchOnly:true,
+
+touchStartThreshold:8,
+
+onEnd:(evt)=>{
+
+const current =
+products.filter(
+p=>p.cat===currentCategory
+);
+
+const others =
+products.filter(
+p=>p.cat!==currentCategory
+);
+
+const moved =
+current.splice(
+evt.oldIndex,
+1
+)[0];
+
+current.splice(
+evt.newIndex,
+0,
+moved
+);
+
+products = [
+...others,
+...current
+];
+
+save();
+
+render();
+
+}
+
+});
+
 generateText();
 
 }
@@ -1033,17 +1070,14 @@ return;
 }
 
 const text =
-document.getElementById(
-'export'
-).value;
+document.getElementById('export').value;
 
 try{
 
 await navigator.clipboard.writeText(text);
 
 const phone =
-supplier.phone
-.replace('+','');
+supplier.phone.replace('+','');
 
 setTimeout(()=>{
 
