@@ -17,10 +17,9 @@ viewport-fit=cover
 <link
 rel="icon"
 type="image/svg+xml"
-href="
-data:image/svg+xml,
+href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-<rect width='100' height='100' rx='24' fill='%2300ffff'/>
+<rect width='100' height='100' rx='22' fill='%2300ffff'/>
 <text
 x='50%'
 y='58%'
@@ -28,56 +27,58 @@ font-size='42'
 font-family='Arial'
 font-weight='800'
 text-anchor='middle'
-fill='%230d0f12'>
+fill='%23000000'>
 DV
 </text>
-</svg>
-">
+</svg>"
+>
 
 <style>
 
 *{
-    touch-action: manipulation;
-    box-sizing: border-box;
+    touch-action:manipulation;
+    box-sizing:border-box;
 }
 
 body{
-    font-family: -apple-system, Arial, sans-serif;
-    background: #0d0f12;
-    color: #fff;
-    margin: 0;
-    padding: 12px;
-    overflow-x: hidden;
+    font-family:-apple-system,Arial,sans-serif;
+    background:#0d0f12;
+    color:#fff;
+    margin:0;
+    padding:12px;
+    overflow-x:hidden;
 }
 
 .wrap{
-    display: grid;
-    gap: 14px;
-    max-width: 100%;
-    overflow: hidden;
+    display:grid;
+    gap:14px;
+    max-width:100%;
 }
 
 .card{
-    background: #13171e;
-    border: 1px solid #00ffff;
-    box-shadow: 0 0 15px rgba(0,255,255,.15);
-    border-radius: 22px;
-    padding: 18px;
-    overflow: hidden;
+    background:#13171e;
+    border:1px solid #00ffff;
+    box-shadow:0 0 15px rgba(0,255,255,.15);
+    border-radius:22px;
+    padding:18px;
 }
 
 .titleInput{
-    width: 100%;
-    font-size: 30px;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    background: linear-gradient(180deg,#11151d,#0d0f12);
-    border: 2px solid #00ffff;
-    color: #00ffff;
-    padding: 24px;
-    border-radius: 28px;
-    margin-bottom: 18px;
-    text-align: center;
+    width:100%;
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:-1.5px;
+    background:linear-gradient(
+        180deg,
+        #11151d,
+        #0d0f12
+    );
+    border:2px solid #00ffff;
+    color:#00ffff;
+    padding:24px;
+    border-radius:28px;
+    margin-bottom:18px;
+    text-align:center;
 
     text-shadow:
         0 0 10px rgba(0,255,255,.6);
@@ -88,140 +89,114 @@ body{
 }
 
 .item{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 0;
-    border-bottom: 1px solid #1f2530;
-    gap: 10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid #1f2530;
+    gap:10px;
 }
 
 .left{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    min-width:0;
 }
 
 .small{
-    opacity: .7;
-    font-size: 13px;
+    opacity:.7;
+    font-size:13px;
 }
 
 .controls{
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-left: auto;
-    flex-shrink: 0;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-left:auto;
+    flex-shrink:0;
 }
 
 button{
-    border: none;
-    border-radius: 16px;
-    background: #00ffff;
-    color: #111;
-    font-weight: 700;
-    font-size: 16px;
-    padding: 14px;
-    transition: .15s;
-    cursor: pointer;
-
-    box-shadow:
-        0 0 12px rgba(0,255,255,.3);
+    border:none;
+    border-radius:16px;
+    background:#00ffff;
+    color:#111;
+    font-weight:700;
+    font-size:16px;
+    padding:14px;
+    cursor:pointer;
+    transition:.15s;
 }
 
 button:active{
-    transform: scale(.97);
+    transform:scale(.97);
 }
 
 .controls button{
-    min-width: 42px;
-    height: 42px;
-    padding: 0;
-    border-radius: 14px;
-    background: #00ffff;
-    border: 1px solid #00ffff;
-    color: #111;
-    box-shadow: none;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.controls button:first-child{
+    min-width:40px;
+    height:40px;
+    padding:0;
+    border-radius:12px;
     background:#171d26;
     border:1px solid #222b38;
     color:#00ffff;
+    font-weight:700;
+    font-size:15px;
 }
 
-.controls button:active{
-    background: #00d9d9;
+.controls button:last-child{
+    background:#00ffff;
+    border:1px solid #00ffff;
+    color:#111;
 }
 
 .fullBtn{
-    width: 100%;
-    display: block;
-}
-
-.bigBtn{
-    min-height: 64px;
-    font-size: 18px;
-    font-weight: 800;
+    width:100%;
+    min-height:62px;
+    font-size:18px;
 }
 
 .qty{
-    min-width: 28px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    color: #fff;
+    min-width:24px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
 }
 
 .active{
-    color: #39ff14;
-    font-weight: 700;
+    color:#39ff14;
+    font-weight:700;
 
     text-shadow:
         0 0 6px rgba(57,255,20,.8),
         0 0 14px rgba(57,255,20,.45);
 }
 
-.activeBtn{
-    background: #00ffff !important;
-    color: #111 !important;
-    font-weight: bold !important;
-    border: 1px solid #00ffff !important;
-
-    box-shadow:
-        0 0 15px rgba(0,255,255,.7),
-        inset 0 0 10px rgba(255,255,255,.15) !important;
-}
-
 textarea{
-    width: 100%;
-    height: 260px;
-    background: #090b0e;
-    color: #fff;
-    border: 1px solid #1f2530;
-    border-radius: 18px;
-    padding: 16px;
-    font-family: monospace;
-    font-size: 15px;
-    line-height: 1.5;
-    resize: none;
+    width:100%;
+    height:260px;
+    background:#090b0e;
+    color:#fff;
+    border:1px solid #1f2530;
+    border-radius:18px;
+    padding:16px;
+    font-family:monospace;
+    font-size:15px;
+    line-height:1.5;
+    resize:none;
 }
 
 input,
 select{
-    width: 100%;
-    padding: 14px;
-    border-radius: 16px;
-    border: 1px solid #00ffff;
-    background: #11151d;
-    color: #fff;
-    margin-bottom: 10px;
-    font-size: 16px;
-    min-width: 0;
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid #00ffff;
+    background:#11151d;
+    color:#fff;
+    margin-bottom:10px;
+    font-size:16px;
 
     box-shadow:
         inset 0 0 5px rgba(0,255,255,.1);
@@ -229,156 +204,136 @@ select{
 
 input:focus,
 select:focus{
-    outline: none;
+    outline:none;
 
     box-shadow:
         0 0 10px rgba(0,255,255,.4);
 }
 
 .row{
-    display: grid;
-    grid-template-columns: 1fr 90px 1fr;
-    gap: 8px;
+    display:grid;
+    grid-template-columns:1fr 90px 1fr;
+    gap:8px;
 }
 
 #categorySelect{
-    width: 100%;
-    margin-bottom: 14px;
-    padding: 14px;
-    border-radius: 16px;
-    border: 1px solid #00ffff;
-    background: #11151d;
-    color: #00ffff;
-    font-size: 18px;
-    font-weight: 700;
+    width:100%;
+    margin-bottom:14px;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid #00ffff;
+    background:#11151d;
+    color:#00ffff;
+    font-size:18px;
+    font-weight:700;
 }
 
 .categorySettings{
-    margin-bottom: 16px;
-    padding: 14px;
-    background: #0d0f12;
-    border-radius: 18px;
-    border: 1px solid #1f2530;
+    margin-bottom:16px;
+    padding:14px;
+    background:#0d0f12;
+    border-radius:18px;
+    border:1px solid #1f2530;
 }
 
 .editModal{
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 999;
-    backdrop-filter: blur(10px);
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:999;
+    backdrop-filter:blur(10px);
 }
 
 .editBox{
-    background: #13171e;
-    padding: 20px;
-    border-radius: 22px;
-    width: 100%;
-    max-width: 520px;
-    border: 1px solid #00ffff;
+    background:#13171e;
+    padding:20px;
+    border-radius:22px;
+    width:100%;
+    max-width:520px;
+    border:1px solid #00ffff;
 
     box-shadow:
         0 0 25px rgba(0,255,255,.3);
 }
 
-.editBox h3{
-    margin-top: 0;
-    color: #00ffff;
-}
-
 .editButtons{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 16px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:16px;
 }
 
 .editButtons button{
-    width: 100%;
-    min-height: 60px;
-    font-size: 16px;
-    font-weight: 700;
+    width:100%;
+    min-height:60px;
+    font-size:16px;
+    font-weight:700;
 }
 
 .saveBtn{
-    background: #00ffff;
-    color: #111;
+    background:#00ffff;
+    color:#111;
 }
 
 .deleteBtn{
-    background: #171d26;
-    color: #00ffff;
-    border:1px solid #222b38;
-    box-shadow:none;
+    background:#c63b3b !important;
+    color:#fff !important;
+    border:1px solid #c63b3b !important;
 }
 
 .actionButtons{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
 }
 
 .actionButtons button{
-    width: 100%;
-    min-height: 64px;
-    font-size: 18px;
-    background: #171d26;
-    border: 1px solid #222b38;
-    color: #00ffff;
-    box-shadow: none;
+    width:100%;
+    min-height:64px;
+    font-size:18px;
+    background:#171d26;
+    border:1px solid #222b38;
+    color:#00ffff;
 }
 
 .actionButtons button:nth-child(3),
 .actionButtons button:nth-child(4){
-    background: #00ffff;
-    color: #111;
-    font-weight: 700;
-
-    box-shadow:
-        0 0 15px rgba(0,255,255,.4);
+    background:#00ffff;
+    color:#111;
+    font-weight:700;
 }
 
 h3{
-    font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 16px;
-    color: #00ffff;
+    font-size:20px;
+    margin-top:0;
+    margin-bottom:16px;
+    color:#00ffff;
 }
 
 @media(max-width:480px){
 
     .titleInput{
-        font-size: 24px;
-        padding: 18px;
-    }
-
-    .controls{
-        gap: 4px;
+        font-size:24px;
+        padding:18px;
     }
 
     .controls button{
-        min-width: 38px;
-        height: 38px;
-        font-size: 14px;
+        min-width:36px;
+        height:36px;
+        font-size:14px;
     }
 
     .qty{
-        font-size: 18px;
-        min-width: 22px;
+        font-size:17px;
     }
 
     .row{
-        grid-template-columns: 1fr 80px 1fr;
-    }
-
-    .actionButtons button{
-        font-size: 16px;
-        min-height: 58px;
+        grid-template-columns:1fr 80px 1fr;
     }
 
 }
@@ -422,7 +377,7 @@ oninput="saveMainTitle()"
 
 <button
 onclick="addProduct()"
-class="fullBtn bigBtn">
+class="fullBtn">
 Додати в базу
 </button>
 
@@ -440,9 +395,7 @@ class="fullBtn bigBtn">
 
 <div class="card">
 
-<h3 id="exportTitle">
-Текст постачальнику
-</h3>
+<h3>Текст постачальнику</h3>
 
 <div class="categorySettings">
 
@@ -458,7 +411,7 @@ placeholder="+380..."
 
 <button
 onclick="saveSupplier()"
-class="fullBtn bigBtn">
+class="fullBtn">
 Зберегти постачальника
 </button>
 
@@ -529,13 +482,13 @@ onchange="uploadBackup(event)"
 
 <button
 class="deleteBtn"
-onclick="closeEdit()">
-Закрити
+onclick="deleteEdit()">
+Видалити
 </button>
 
 <button
 class="saveBtn"
-onclick="saveEdit(); closeEdit();">
+onclick="saveEdit()">
 Зберегти
 </button>
 
@@ -545,582 +498,574 @@ onclick="saveEdit(); closeEdit();">
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-
 <script>
 
-let products = JSON.parse(localStorage.getItem('zakupka_products') || '[]');
-let suppliers = JSON.parse(localStorage.getItem('zakupka_suppliers') || '{}');
+let products = JSON.parse(
+localStorage.getItem('zakupka_products') || '[]'
+);
+
+let suppliers = JSON.parse(
+localStorage.getItem('zakupka_suppliers') || '{}'
+);
+
 let currentCategory = '';
 let currentEdit = null;
-let sortable = null;
 
 let mainTitle =
-localStorage.getItem('zakupka_main_title')
-|| '🍴 Dolce Vita Трускавець';
+localStorage.getItem(
+'zakupka_main_title'
+) || '🍴 Dolce Vita';
 
 function save(){
 
-    localStorage.setItem(
-        'zakupka_products',
-        JSON.stringify(products)
-    );
+localStorage.setItem(
+'zakupka_products',
+JSON.stringify(products)
+);
 
-    localStorage.setItem(
-        'zakupka_suppliers',
-        JSON.stringify(suppliers)
-    );
+localStorage.setItem(
+'zakupka_suppliers',
+JSON.stringify(suppliers)
+);
 
 }
 
 function saveMainTitle(){
 
-    mainTitle =
-    document.getElementById('mainTitle').value
-    || 'Закупка';
+mainTitle =
+document.getElementById(
+'mainTitle'
+).value || 'Закупка';
 
-    localStorage.setItem(
-        'zakupka_main_title',
-        mainTitle
-    );
+localStorage.setItem(
+'zakupka_main_title',
+mainTitle
+);
 
-    generateText();
+generateText();
 
 }
 
 function addProduct(){
 
-    const name =
-    document.getElementById('name').value.trim();
+const name =
+document.getElementById('name').value.trim();
 
-    const cat =
-    document.getElementById('cat').value.trim();
+const cat =
+document.getElementById('cat').value.trim();
 
-    if(!name || !cat) return;
+if(!name || !cat) return;
 
-    products.push({
+products.push({
 
-        name: name,
+name:name,
 
-        qty: Math.max(
-            0,
-            Number(
-                document.getElementById('qty').value
-            ) || 0
-        ),
+qty:Number(
+document.getElementById('qty').value
+),
 
-        unit:
-        document.getElementById('unit').value,
+unit:document.getElementById('unit').value,
 
-        cat: cat,
+cat:cat,
 
-        comment:
-        document.getElementById('comment').value,
+comment:document.getElementById('comment').value,
 
-        active: false
+active:false
 
-    });
+});
 
-    save();
+save();
 
-    render();
+render();
 
-    document.getElementById('name').value = '';
-    document.getElementById('qty').value = '1';
-    document.getElementById('unit').value = 'шт';
-    document.getElementById('cat').value = '';
-    document.getElementById('comment').value = '';
+document.getElementById('name').value='';
+document.getElementById('qty').value='1';
+document.getElementById('unit').value='шт';
+document.getElementById('cat').value='';
+document.getElementById('comment').value='';
 
 }
 
 function toggle(i){
 
-    products[i].active =
-    !products[i].active;
+products[i].active =
+!products[i].active;
 
-    save();
+save();
 
-    render();
+render();
 
 }
 
 function plus(i){
 
-    products[i].qty++;
+products[i].qty++;
 
-    save();
+save();
 
-    render();
+render();
 
 }
 
 function minus(i){
 
-    if(products[i].qty > 0){
+if(products[i].qty>0){
 
-        products[i].qty--;
+products[i].qty--;
 
-    }
+}
 
-    save();
+save();
 
-    render();
+render();
 
 }
 
 function openEdit(i){
 
-    currentEdit = i;
+currentEdit = i;
 
-    const p = products[i];
+const p = products[i];
 
-    document.getElementById('editName').value = p.name;
-    document.getElementById('editQty').value = p.qty;
-    document.getElementById('editUnit').value = p.unit;
-    document.getElementById('editCat').value = p.cat;
-    document.getElementById('editComment').value = p.comment || '';
+document.getElementById(
+'editName'
+).value = p.name;
 
-    document.getElementById('editModal')
-    .style.display = 'flex';
+document.getElementById(
+'editQty'
+).value = p.qty;
+
+document.getElementById(
+'editUnit'
+).value = p.unit;
+
+document.getElementById(
+'editCat'
+).value = p.cat;
+
+document.getElementById(
+'editComment'
+).value = p.comment || '';
+
+document.getElementById(
+'editModal'
+).style.display='flex';
 
 }
 
 function closeEdit(){
 
-    document.getElementById('editModal')
-    .style.display = 'none';
+document.getElementById(
+'editModal'
+).style.display='none';
 
 }
 
 function saveEdit(){
 
-    products[currentEdit].name =
-    document.getElementById('editName').value;
+products[currentEdit].name =
+document.getElementById(
+'editName'
+).value;
 
-    products[currentEdit].qty =
-    Math.max(
-        0,
-        Number(
-            document.getElementById('editQty').value
-        ) || 0
-    );
+products[currentEdit].qty =
+Number(
+document.getElementById(
+'editQty'
+).value
+);
 
-    products[currentEdit].unit =
-    document.getElementById('editUnit').value;
+products[currentEdit].unit =
+document.getElementById(
+'editUnit'
+).value;
 
-    products[currentEdit].cat =
-    document.getElementById('editCat').value;
+products[currentEdit].cat =
+document.getElementById(
+'editCat'
+).value;
 
-    products[currentEdit].comment =
-    document.getElementById('editComment').value;
+products[currentEdit].comment =
+document.getElementById(
+'editComment'
+).value;
 
-    save();
+save();
 
-    render();
+closeEdit();
+
+render();
+
+}
+
+function deleteEdit(){
+
+if(confirm('Видалити продукт?')){
+
+products.splice(currentEdit,1);
+
+save();
+
+closeEdit();
+
+render();
+
+}
 
 }
 
 function saveSupplier(){
 
-    suppliers[currentCategory] = {
+suppliers[currentCategory] = {
 
-        name:
-        document.getElementById('supplierName').value,
+name:
+document.getElementById(
+'supplierName'
+).value,
 
-        phone:
-        document.getElementById('supplierPhone').value
+phone:
+document.getElementById(
+'supplierPhone'
+).value
 
-    };
+};
 
-    save();
+save();
 
-    alert('Збережено');
+alert('Збережено');
 
 }
 
 function clearCategory(){
 
-    if(confirm('Очистити замовлення та скинути лічильники для цієї категорії?')){
+products.forEach(p=>{
 
-        products.forEach(p=>{
+if(p.cat===currentCategory){
 
-            if(p.cat === currentCategory){
+p.active = false;
 
-                p.active = false;
-                p.qty = 1;
+}
 
-            }
+});
 
-        });
+save();
 
-        save();
-
-        render();
-
-    }
+render();
 
 }
 
 function downloadBackup(){
 
-    const backup = {
-        products,
-        suppliers,
-        mainTitle
-    };
+const backup = {
 
-    const blob = new Blob(
-        [JSON.stringify(backup,null,2)],
-        {type:'application/json'}
-    );
+products,
+suppliers,
+mainTitle
 
-    const a =
-    document.createElement('a');
+};
 
-    a.href =
-    URL.createObjectURL(blob);
+const blob = new Blob(
+[JSON.stringify(backup,null,2)],
+{type:'application/json'}
+);
 
-    a.download =
-    'zakupka-backup.json';
+const a =
+document.createElement('a');
 
-    a.click();
+a.href =
+URL.createObjectURL(blob);
+
+a.download =
+'zakupka-backup.json';
+
+a.click();
 
 }
 
 function uploadBackup(event){
 
-    const file =
-    event.target.files[0];
+const file =
+event.target.files[0];
 
-    if(!file) return;
+if(!file) return;
 
-    const reader =
-    new FileReader();
+const reader =
+new FileReader();
 
-    reader.onload = function(e){
+reader.onload = function(e){
 
-        try{
+const data =
+JSON.parse(e.target.result);
 
-            const data =
-            JSON.parse(e.target.result);
+products =
+data.products || [];
 
-            products =
-            data.products || [];
+suppliers =
+data.suppliers || {};
 
-            suppliers =
-            data.suppliers || {};
+mainTitle =
+data.mainTitle || 'Закупка';
 
-            mainTitle =
-            data.mainTitle || 'Закупка';
+save();
 
-            save();
+localStorage.setItem(
+'zakupka_main_title',
+mainTitle
+);
 
-            localStorage.setItem(
-                'zakupka_main_title',
-                mainTitle
-            );
+render();
 
-            render();
+alert('Backup відновлено');
 
-            alert('Backup відновлено');
+};
 
-        }catch(err){
-
-            alert('Помилка backup файлу');
-
-        }
-
-    };
-
-    reader.readAsText(file);
+reader.readAsText(file);
 
 }
 
 function render(){
 
-    const box =
-    document.getElementById('products');
+const box =
+document.getElementById('products');
 
-    box.innerHTML = '';
+box.innerHTML='';
 
-    document.getElementById('mainTitle').value =
-    mainTitle;
+document.getElementById(
+'mainTitle'
+).value = mainTitle;
 
-    document.title = mainTitle;
+document.title = mainTitle;
 
-    const grouped = {};
+const grouped = {};
 
-    products.forEach((p,i)=>{
+products.forEach((p,i)=>{
 
-        if(!grouped[p.cat]){
+if(!grouped[p.cat]){
 
-            grouped[p.cat] = [];
+grouped[p.cat]=[];
 
-        }
+}
 
-        grouped[p.cat].push({p,i});
+grouped[p.cat].push({p,i});
 
-    });
+});
 
-    const categories =
-    Object.keys(grouped);
+const categories =
+Object.keys(grouped);
 
-    if(!currentCategory && categories.length){
+if(!currentCategory && categories.length){
 
-        currentCategory = categories[0];
+currentCategory = categories[0];
 
-    }
+}
 
-    const select =
-    document.getElementById('categorySelect');
+const select =
+document.getElementById(
+'categorySelect'
+);
 
-    select.innerHTML = '';
+select.innerHTML='';
 
-    categories.forEach(cat=>{
+categories.forEach(cat=>{
 
-        const option =
-        document.createElement('option');
+const option =
+document.createElement('option');
 
-        option.value = cat;
+option.value = cat;
 
-        option.textContent = cat;
+option.textContent = cat;
 
-        if(cat === currentCategory){
+if(cat===currentCategory){
 
-            option.selected = true;
+option.selected = true;
 
-        }
+}
 
-        select.appendChild(option);
+select.appendChild(option);
 
-    });
+});
 
-    select.onchange = (e)=>{
+select.onchange = (e)=>{
 
-        currentCategory = e.target.value;
+currentCategory = e.target.value;
 
-        render();
+render();
 
-    };
+};
 
-    if(suppliers[currentCategory]){
+if(
+suppliers[currentCategory]
+){
 
-        document.getElementById('supplierName').value =
-        suppliers[currentCategory].name || '';
+document.getElementById(
+'supplierName'
+).value =
+suppliers[currentCategory].name || '';
 
-        document.getElementById('supplierPhone').value =
-        suppliers[currentCategory].phone || '';
+document.getElementById(
+'supplierPhone'
+).value =
+suppliers[currentCategory].phone || '';
 
-    }else{
+}
 
-        document.getElementById('supplierName').value = '';
-        document.getElementById('supplierPhone').value = '';
+if(!grouped[currentCategory]) return;
 
-    }
+grouped[currentCategory]
+.forEach(({p,i})=>{
 
-    if(!grouped[currentCategory]){
+const row =
+document.createElement('div');
 
-        generateText();
+row.className='item';
 
-        return;
+row.innerHTML = `
 
-    }
+<div class="left">
 
-    grouped[currentCategory].forEach(({p,i})=>{
+<div class="${
+p.active ? 'active':''
+}">
+${p.name}
+</div>
 
-        const row =
-        document.createElement('div');
+${p.comment ? `
+<div class="small"
+style="
+color:#00ffff;
+margin-top:4px;
+font-size:13px;
+">
+💬 ${p.comment}
+</div>
+` : ''}
 
-        row.className = 'item';
+<div class="small">
+${p.qty} ${p.unit}
+</div>
 
-        row.innerHTML = `
+</div>
 
-        <div class="left">
+<div class="controls">
 
-            <div class="${p.active ? 'active' : ''}">
-                ${p.name}
-            </div>
+<button
+onclick="openEdit(${i})">
+✏️
+</button>
 
-            ${p.comment ? `
-            <div
-            class="small"
-            style="
-            color:#00ffff;
-            margin-top:4px;
-            font-size:13px;
-            ">
-            💬 ${p.comment}
-            </div>
-            ` : ''}
+<button onclick="minus(${i})">
+−
+</button>
 
-            <div class="small">
-                ${p.qty} ${p.unit}
-            </div>
+<div class="qty">
+${p.qty}
+</div>
 
-        </div>
+<button onclick="plus(${i})">
++
+</button>
 
-        <div class="controls">
+<button onclick="toggle(${i})">
+✓
+</button>
 
-            <button onclick="openEdit(${i})">
-            ✏️
-            </button>
+</div>
 
-            <button onclick="minus(${i})">
-            −
-            </button>
+`;
 
-            <div class="qty">
-            ${p.qty}
-            </div>
+box.appendChild(row);
 
-            <button onclick="plus(${i})">
-            +
-            </button>
+});
 
-            <button
-            onclick="toggle(${i})"
-            class="${p.active ? 'activeBtn' : ''}">
-            ✓
-            </button>
-
-        </div>
-
-        `;
-
-        box.appendChild(row);
-
-    });
-
-    if(sortable){
-
-        sortable.destroy();
-
-    }
-
-    sortable = new Sortable(box,{
-
-        animation:150,
-        delay:200,
-        delayOnTouchOnly:true,
-        touchStartThreshold:8,
-
-        onEnd:(evt)=>{
-
-            const categoryIndexes = products
-            .map((p,index)=>
-                p.cat === currentCategory
-                ? index
-                : null
-            )
-            .filter(v => v !== null);
-
-            const movedIndex =
-            categoryIndexes[evt.oldIndex];
-
-            const targetIndex =
-            categoryIndexes[evt.newIndex];
-
-            const movedItem =
-            products.splice(movedIndex,1)[0];
-
-            products.splice(
-                targetIndex,
-                0,
-                movedItem
-            );
-
-            save();
-
-            render();
-
-        }
-
-    });
-
-    generateText();
+generateText();
 
 }
 
 function generateText(){
 
-    const grouped = {};
+const grouped = {};
 
-    products
-    .filter(p=>
-        p.active &&
-        p.cat === currentCategory
-    )
-    .forEach(p=>{
+products
+.filter(p=>
+p.active &&
+p.cat===currentCategory
+)
+.forEach(p=>{
 
-        if(!grouped[p.cat]){
+if(!grouped[p.cat]){
 
-            grouped[p.cat] = [];
+grouped[p.cat]=[];
 
-        }
+}
 
-        grouped[p.cat].push(
-            `${p.name} — ${p.qty} ${p.unit}${p.comment ? ' | ' + p.comment : ''}`
-        );
+grouped[p.cat].push(
+`${p.name} — ${p.qty} ${p.unit}${
+p.comment ? ' | ' + p.comment : ''
+}`
+);
 
-    });
+});
 
-    let text =
-    'Доброго дня\n\n' +
-    mainTitle +
-    '\n\n';
+let text =
+'Доброго дня\n\n' +
+mainTitle +
+'\n\n';
 
-    Object.keys(grouped).forEach(cat=>{
+Object.keys(grouped).forEach(cat=>{
 
-        text += grouped[cat].join('\n');
+text += grouped[cat].join('\n');
 
-        text += '\n\n';
+text += '\n\n';
 
-    });
+});
 
-    document.getElementById('exportTitle')
-    .innerText =
-    'Текст постачальнику';
-
-    document.getElementById('export').value =
-    text.trim();
+document.getElementById('export').value =
+text.trim();
 
 }
 
 async function sendCurrentSupplier(){
 
-    const supplier =
-    suppliers[currentCategory];
+const supplier =
+suppliers[currentCategory];
 
-    if(!supplier || !supplier.phone){
+if(!supplier?.phone){
 
-        alert('Вкажи номер постачальника');
+alert(
+'Вкажи номер постачальника'
+);
 
-        return;
+return;
 
-    }
+}
 
-    const text =
-    document.getElementById('export').value;
+const text =
+document.getElementById(
+'export'
+).value;
 
-    try{
+try{
 
-        await navigator.clipboard.writeText(text);
+await navigator.clipboard.writeText(text);
 
-        const phone =
-        supplier.phone.replace('+','');
+const phone =
+supplier.phone
+.replace('+','');
 
-        setTimeout(()=>{
+setTimeout(()=>{
 
-            window.location.href =
-            `viber://chat?number=${phone}`;
+window.location.href =
+`viber://chat?number=${phone}`;
 
-        },300);
+},300);
 
-    }catch(err){
+}catch(err){
 
-        alert('Не вдалося скопіювати текст');
+alert(
+'Не вдалося скопіювати текст'
+);
 
-    }
+}
 
 }
 
