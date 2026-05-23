@@ -16,7 +16,7 @@ viewport-fit=cover
 
 <link
 rel="manifest"
-href="manifest.json?v=99"
+href="manifest.json"
 >
 
 <meta
@@ -36,13 +36,13 @@ content="black-translucent"
 
 <link
 rel="apple-touch-icon"
-href="apple-touch-icon.png?v=99"
+href="apple-touch-icon.png"
 >
 
 <link
 rel="icon"
 type="image/png"
-href="apple-touch-icon.png?v=99"
+href="apple-touch-icon.png"
 >
 
 <style>
@@ -546,11 +546,11 @@ onclick="saveEdit()">
 
 <script>
 
-// АГРЕСИВНЕ ОЧИЩЕННЯ СТАРОГО КЕШУ СЕРВІС-ВОРКЕРА ТА БРАУЗЕРА
+// Очищення старого кешу для повної гарантії
 if ('caches' in window) {
     caches.keys().then(function(names) {
         for (let name of names) {
-            caches.delete(name); // Повністю видаляємо старі збережені файли іконок
+            caches.delete(name);
         }
     });
 }
@@ -558,13 +558,13 @@ if ('caches' in window) {
 if('serviceWorker' in navigator){
     navigator.serviceWorker.getRegistrations().then(function(registrations) {
         for(let registration of registrations) {
-            registration.unregister(); // Видаляємо стару реєстрацію sw.js
+            registration.unregister();
         }
     });
 
     window.addEventListener('load',()=>{
-        navigator.serviceWorker.register('./sw.js?v=99').then(reg => {
-            reg.update(); // Примусово завантажуємо оновлений код програми
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+            reg.update();
         }).catch(err => {
             console.log('SW registration failed:', err);
         });
