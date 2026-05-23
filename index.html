@@ -39,14 +39,14 @@ name="apple-mobile-web-app-title"
 content="DiVo"
 >
 
-<!-- Вбудована SVG-іконка, яка відобразиться за будь-яких умов -->
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230d0f12'/%3E%3Ccircle cx='90' cy='90' r='65' fill='none' stroke='%2300ffff' stroke-width='8'/%3E%3Ctext x='90' y='115' font-family='Arial, sans-serif' font-size='75' font-weight='900' fill='%23ffffff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230d0f12'/%3E%3Ccircle cx='90' cy='90' r='65' fill='none' stroke='%2300ffff' stroke-width='8'/%3E%3Ctext x='90' y='115' font-family='Arial, sans-serif' font-size='75' font-weight='900' fill='%23ffffff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<!-- Виправлено: примусове оновлення до версії 777, щоб збити стару букву Д -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=777">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=777">
 
 <link
 rel="icon"
-type="image/svg+xml"
-href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230d0f12'/%3E%3Ccircle cx='90' cy='90' r='65' fill='none' stroke='%2300ffff' stroke-width='8'/%3E%3Ctext x='90' y='115' font-family='Arial, sans-serif' font-size='75' font-weight='900' fill='%23ffffff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E"
+type="image/png"
+href="apple-touch-icon.png?v=777"
 >
 
 <style>
@@ -550,7 +550,6 @@ onclick="saveEdit()">
 
 <script>
 
-// Видаляємо старий кеш зображень
 if ('caches' in window) {
     caches.keys().then(function(names) {
         for (let name of names) {
@@ -559,7 +558,6 @@ if ('caches' in window) {
     });
 }
 
-// Стабільна реєстрація без самознищення воркера
 if('serviceWorker' in navigator){
     window.addEventListener('load',()=>{
         navigator.serviceWorker.register('./sw.js').then(reg => {
