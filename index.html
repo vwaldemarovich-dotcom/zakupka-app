@@ -15,15 +15,35 @@ viewport-fit=cover
 <title>DV</title>
 
 <link
+rel="manifest"
+href="manifest.json"
+>
+
+<meta
+name="theme-color"
+content="#00ffff"
+>
+
+<meta
+name="apple-mobile-web-app-capable"
+content="yes"
+>
+
+<meta
+name="apple-mobile-web-app-status-bar-style"
+content="black-translucent"
+>
+
+<link
 rel="apple-touch-icon"
 sizes="180x180"
-href="https://dummyimage.com/180x180/00ffff/000000&text=DV"
+href="icon-192.png"
 >
 
 <link
 rel="icon"
 type="image/png"
-href="https://dummyimage.com/64x64/00ffff/000000&text=DV"
+href="icon-192.png"
 >
 
 <style>
@@ -373,7 +393,7 @@ oninput="saveMainTitle()"
 
 <div class="row">
 
-<input id="qty" type="number" value="1">
+<input id="qty" type="number" value="1" min="1">
 
 <select id="unit">
 <option value="шт">шт</option>
@@ -441,7 +461,7 @@ class="fullBtn">
 </button>
 
 <button onclick="sendCurrentSupplier()">
-📲 Надіслати у Viber
+📲 Надіслати
 </button>
 
 <button onclick="clearCategory()">
@@ -476,7 +496,7 @@ onchange="uploadBackup(event)"
 
 <div class="row">
 
-<input id="editQty" type="number">
+<input id="editQty" type="number" min="1">
 
 <select id="editUnit">
 <option value="шт">шт</option>
@@ -515,15 +535,39 @@ onclick="saveEdit()">
 
 <script>
 
+if('serviceWorker' in navigator){
+
+window.addEventListener('load',()=>{
+
+navigator.serviceWorker.register('./sw.js');
+
+});
+
+}
+
 let products = JSON.parse(localStorage.getItem('zakupka_products') || '[]');
+
 let suppliers = JSON.parse(localStorage.getItem('zakupka_suppliers') || '{}');
 
 let currentCategory = '';
+
 let currentEdit = null;
+
 let sortable = null;
 
 let mainTitle =
 localStorage.getItem('zakupka_main_title') || 'DV';
+
+function escapeHtml(text=''){
+
+return text
+.replace(/&/g,'&amp;')
+.replace(/</g,'&lt;')
+.replace(/>/g,'&gt;')
+.replace(/"/g,'&quot;')
+.replace(/'/g,'&#039;');
+
+}
 
 function save(){
 
@@ -567,8 +611,9 @@ products.push({
 
 name:name,
 
-qty:Number(
-document.getElementById('qty').value
+qty:Math.max(
+1,
+Number(document.getElementById('qty').value)
 ),
 
 unit:document.getElementById('unit').value,
@@ -616,7 +661,7 @@ render();
 
 function minus(i){
 
-if(products[i].qty>0){
+if(products[i].qty>1){
 
 products[i].qty--;
 
@@ -660,7 +705,10 @@ products[currentEdit].name =
 document.getElementById('editName').value;
 
 products[currentEdit].qty =
-Number(document.getElementById('editQty').value);
+Math.max(
+1,
+Number(document.getElementById('editQty').value)
+);
 
 products[currentEdit].unit =
 document.getElementById('editUnit').value;
@@ -715,6 +763,12 @@ alert('Збережено');
 
 function clearCategory(){
 
+const ok = confirm(
+'Точно скинути всі вибрані товари?'
+);
+
+if(!ok) return;
+
 products.forEach(p=>{
 
 if(p.cat===currentCategory){
@@ -725,6 +779,8 @@ p.qty = 1;
 }
 
 });
+
+document.getElementById('export').value='';
 
 save();
 
@@ -770,6 +826,8 @@ new FileReader();
 
 reader.onload = function(e){
 
+try{
+
 const data =
 JSON.parse(e.target.result);
 
@@ -792,6 +850,12 @@ mainTitle
 render();
 
 alert('Backup відновлено');
+
+}catch(err){
+
+alert('Помилка backup файлу');
+
+}
 
 };
 
@@ -878,6 +942,16 @@ document.getElementById(
 ).value =
 suppliers[currentCategory].phone || '';
 
+}else{
+
+document.getElementById(
+'supplierName'
+).value='';
+
+document.getElementById(
+'supplierPhone'
+).value='';
+
 }
 
 if(!grouped[currentCategory]){
@@ -903,7 +977,7 @@ row.innerHTML = `
 <div class="${
 p.active ? 'active':''
 }">
-${p.name}
+${escapeHtml(p.name)}
 </div>
 
 ${p.comment ? `
@@ -913,7 +987,7 @@ color:#00ffff;
 margin-top:4px;
 font-size:13px;
 ">
-💬 ${p.comment}
+💬 ${escapeHtml(p.comment)}
 </div>
 ` : ''}
 
@@ -1050,7 +1124,9 @@ text += '\n\n';
 });
 
 document.getElementById('export').value =
-text.trim();
+Object.keys(grouped).length
+? text.trim()
+: '';
 
 }
 
@@ -1071,6 +1147,16 @@ return;
 
 const text =
 document.getElementById('export').value;
+
+if(!text){
+
+alert(
+'Немає вибраних товарів'
+);
+
+return;
+
+}
 
 try{
 
