@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -15,35 +16,15 @@ viewport-fit=cover
 <title>DV</title>
 
 <link
-rel="manifest"
-href="manifest.json"
->
-
-<meta
-name="theme-color"
-content="#00ffff"
->
-
-<meta
-name="apple-mobile-web-app-capable"
-content="yes"
->
-
-<meta
-name="apple-mobile-web-app-status-bar-style"
-content="black-translucent"
->
-
-<link
 rel="apple-touch-icon"
 sizes="180x180"
-href="icon-192.png"
+href="https://dummyimage.com/180x180/00ffff/000000&text=DV"
 >
 
 <link
 rel="icon"
 type="image/png"
-href="icon-192.png"
+href="https://dummyimage.com/64x64/00ffff/000000&text=DV"
 >
 
 <style>
@@ -321,24 +302,41 @@ select:focus{
 .actionButtons{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:10px;
+    gap:14px;
+    margin-top:14px;
 }
 
 .actionButtons button{
     width:100%;
-    min-height:64px;
-    font-size:18px;
+    min-height:92px;
+    font-size:22px;
+    font-weight:800;
+    border-radius:22px;
+}
+
+.actionButtons button:nth-child(1),
+.actionButtons button:nth-child(2){
     background:#171d26;
     border:1px solid #222b38;
     color:#00ffff;
 }
 
-.actionButtons button:nth-child(3),
+.actionButtons button:nth-child(3){
+    background:#39ff14 !important;
+    color:#000 !important;
+    border:2px solid #39ff14 !important;
+
+    box-shadow:
+        0 0 22px rgba(57,255,20,.55);
+}
+
 .actionButtons button:nth-child(4){
-    background:#00ffff;
-    color:#111;
-    font-weight:700;
+    background:#ff2d2d !important;
+    color:#fff !important;
+    border:2px solid #ff2d2d !important;
+
+    box-shadow:
+        0 0 22px rgba(255,45,45,.45);
 }
 
 h3{
@@ -393,7 +391,7 @@ oninput="saveMainTitle()"
 
 <div class="row">
 
-<input id="qty" type="number" value="1" min="1">
+<input id="qty" type="number" value="1">
 
 <select id="unit">
 <option value="шт">шт</option>
@@ -496,7 +494,7 @@ onchange="uploadBackup(event)"
 
 <div class="row">
 
-<input id="editQty" type="number" min="1">
+<input id="editQty" type="number">
 
 <select id="editUnit">
 <option value="шт">шт</option>
@@ -535,39 +533,15 @@ onclick="saveEdit()">
 
 <script>
 
-if('serviceWorker' in navigator){
-
-window.addEventListener('load',()=>{
-
-navigator.serviceWorker.register('./sw.js');
-
-});
-
-}
-
 let products = JSON.parse(localStorage.getItem('zakupka_products') || '[]');
-
 let suppliers = JSON.parse(localStorage.getItem('zakupka_suppliers') || '{}');
 
 let currentCategory = '';
-
 let currentEdit = null;
-
 let sortable = null;
 
 let mainTitle =
 localStorage.getItem('zakupka_main_title') || 'DV';
-
-function escapeHtml(text=''){
-
-return text
-.replace(/&/g,'&amp;')
-.replace(/</g,'&lt;')
-.replace(/>/g,'&gt;')
-.replace(/"/g,'&quot;')
-.replace(/'/g,'&#039;');
-
-}
 
 function save(){
 
@@ -611,9 +585,8 @@ products.push({
 
 name:name,
 
-qty:Math.max(
-1,
-Number(document.getElementById('qty').value)
+qty:Number(
+document.getElementById('qty').value
 ),
 
 unit:document.getElementById('unit').value,
@@ -629,12 +602,6 @@ active:false
 save();
 
 render();
-
-document.getElementById('name').value='';
-document.getElementById('qty').value='1';
-document.getElementById('unit').value='шт';
-document.getElementById('cat').value='';
-document.getElementById('comment').value='';
 
 }
 
@@ -661,7 +628,7 @@ render();
 
 function minus(i){
 
-if(products[i].qty>1){
+if(products[i].qty>0){
 
 products[i].qty--;
 
@@ -705,10 +672,7 @@ products[currentEdit].name =
 document.getElementById('editName').value;
 
 products[currentEdit].qty =
-Math.max(
-1,
-Number(document.getElementById('editQty').value)
-);
+Number(document.getElementById('editQty').value);
 
 products[currentEdit].unit =
 document.getElementById('editUnit').value;
@@ -763,12 +727,6 @@ alert('Збережено');
 
 function clearCategory(){
 
-const ok = confirm(
-'Точно скинути всі вибрані товари?'
-);
-
-if(!ok) return;
-
 products.forEach(p=>{
 
 if(p.cat===currentCategory){
@@ -779,8 +737,6 @@ p.qty = 1;
 }
 
 });
-
-document.getElementById('export').value='';
 
 save();
 
@@ -826,8 +782,6 @@ new FileReader();
 
 reader.onload = function(e){
 
-try{
-
 const data =
 JSON.parse(e.target.result);
 
@@ -850,12 +804,6 @@ mainTitle
 render();
 
 alert('Backup відновлено');
-
-}catch(err){
-
-alert('Помилка backup файлу');
-
-}
 
 };
 
@@ -942,16 +890,6 @@ document.getElementById(
 ).value =
 suppliers[currentCategory].phone || '';
 
-}else{
-
-document.getElementById(
-'supplierName'
-).value='';
-
-document.getElementById(
-'supplierPhone'
-).value='';
-
 }
 
 if(!grouped[currentCategory]){
@@ -977,7 +915,7 @@ row.innerHTML = `
 <div class="${
 p.active ? 'active':''
 }">
-${escapeHtml(p.name)}
+${p.name}
 </div>
 
 ${p.comment ? `
@@ -987,7 +925,7 @@ color:#00ffff;
 margin-top:4px;
 font-size:13px;
 ">
-💬 ${escapeHtml(p.comment)}
+💬 ${p.comment}
 </div>
 ` : ''}
 
@@ -1111,22 +1049,27 @@ p.comment ? ' | ' + p.comment : ''
 });
 
 let text =
-'Доброго дня\n\n' +
+'Доброго дня
+
+' +
 mainTitle +
-'\n\n';
+'
+
+';
 
 Object.keys(grouped).forEach(cat=>{
 
-text += grouped[cat].join('\n');
+text += grouped[cat].join('
+');
 
-text += '\n\n';
+text += '
+
+';
 
 });
 
 document.getElementById('export').value =
-Object.keys(grouped).length
-? text.trim()
-: '';
+text.trim();
 
 }
 
@@ -1147,16 +1090,6 @@ return;
 
 const text =
 document.getElementById('export').value;
-
-if(!text){
-
-alert(
-'Немає вибраних товарів'
-);
-
-return;
-
-}
 
 try{
 
@@ -1188,3 +1121,4 @@ render();
 
 </body>
 </html>
+```
